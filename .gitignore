@@ -1,4 +1,4 @@
-up.bat
-.vscode
-/img
+/.vscode
 /audio
+/img
+up.bat
