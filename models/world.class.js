@@ -30,6 +30,12 @@ class World {
                     this.statusBar.setPercentage(this.character.energy);
                 }
             });
+            // this.level.coins.forEach( (coin) => {
+            //     if ( this.character.isColliding(coin) ) {
+                    
+            //         this.statusBar.setPercentage(this.character.collected);
+            //     }
+            // });
         }, 200);
     }
 
