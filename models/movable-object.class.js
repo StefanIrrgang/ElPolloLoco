@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     collected = 0;
+    salsa = 0;
 
     applyGravity() {
         setInterval(() => {
@@ -41,17 +42,31 @@ class MovableObject extends DrawableObject {
 
     isColliding(mo) {
         return this.x + this.width > mo.x &&
-        this.y + this.height > mo.y &&
-        this.x < mo.x &&
-        this.y < mo.y + mo.height;
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height;
     }
 
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {
-            this.energy = 0;            
+            this.energy = 0;
         } else {
-         this.lastHit = new Date().getTime();
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    hitCoin() {
+        this.collected += 5;
+        if (this.collected > 100) {
+            this.collected = 100;
+        }
+    }
+
+    hitBottle() {
+        this.salsa += 10;
+        if (this.salsa > 100) {
+            this.salsa = 100;
         }
     }
 

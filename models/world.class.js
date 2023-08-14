@@ -30,12 +30,18 @@ class World {
                     this.statusBar.setPercentage(this.character.energy);
                 }
             });
-            // this.level.coins.forEach( (coin) => {
-            //     if ( this.character.isColliding(coin) ) {
-                    
-            //         this.statusBar.setPercentage(this.character.collected);
-            //     }
-            // });
+            this.level.coins.forEach( (coin) => {
+                if ( this.character.isColliding(coin) ) {
+                    this.character.hitCoin();
+                    this.statusBarCoin.setPercentage(this.character.collected);
+                }
+            });
+            this.level.bottles.forEach( (bottle) => {
+                if ( this.character.isColliding(bottle) ) {
+                    this.character.hitBottle();
+                    this.statusBarBottle.setPercentage(this.character.salsa);
+                }
+            });
         }, 200);
     }
 
