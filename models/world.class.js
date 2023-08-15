@@ -8,6 +8,7 @@ class World {
     statusBar = new StatusBar();
     statusBarCoin = new StatusBarCoin();
     statusBarBottle = new StatusBarBottle();
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext("2d");
@@ -15,15 +16,30 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld() {
         this.character.world = this;
     }
+    
+
+    run() {
+        setInterval(() => {
+
+        this.checkCollisions();
+        this.checkThrowObjects();
+    }, 200);
+    }
+
+    checkThrowObjects() {
+        if (this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x + 30, this.character.y + 60);
+            this.throwableObjects.push(bottle);
+        }
+    }
 
     checkCollisions() {
-        setInterval(() => {
             this.level.enemies.forEach( (enemy) => {
                 if ( this.character.isColliding(enemy) ) {
                     this.character.hit();
@@ -34,16 +50,28 @@ class World {
                 if ( this.character.isColliding(coin) ) {
                     this.character.hitCoin();
                     this.statusBarCoin.setPercentage(this.character.collected);
+                    this.removeCoin(coin);
                 }
             });
             this.level.bottles.forEach( (bottle) => {
                 if ( this.character.isColliding(bottle) ) {
                     this.character.hitBottle();
                     this.statusBarBottle.setPercentage(this.character.salsa);
+                    this.removeBottle(bottle);
                 }
             });
-        }, 200);
     }
+
+    removeCoin(coin) {
+        let index = this.level.coins.indexOf(coin);
+        this.level.coins.splice(index, 1);
+    }
+
+    removeBottle(bottle) {
+        let index = this.level.bottles.indexOf(bottle);
+        this.level.bottles.splice(index, 1);
+    }
+
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -54,6 +82,7 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
+        this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         
         //Space for fixed objects

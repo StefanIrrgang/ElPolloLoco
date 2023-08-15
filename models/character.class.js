@@ -2,7 +2,7 @@ class Character extends MovableObject {
     y = 80;
     width = 100;
     height = 250;
-    speed = 4;
+    speed = 8;
 
 
     IMAGES_WALKING = [
