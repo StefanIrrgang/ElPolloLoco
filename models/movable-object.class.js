@@ -45,10 +45,9 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(mo) {
-        return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height;
+        return (this.x + this.width) >= mo.x && this.x <= (mo.x + mo.width) &&
+            (this.y + this.height) >= mo.y &&
+            this.y <= (mo.y + mo.height);
     }
 
     hit() {
@@ -60,8 +59,17 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    hitBoss() {
+        this.energy -= 35;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
     hitCoin() {
-        this.collected += 5;
+        this.collected += 10;
         if (this.collected > 100) {
             this.collected = 100;
         }
@@ -84,10 +92,5 @@ class MovableObject extends DrawableObject {
         return timepassed < 1;
     }
 
-    // isColliding(mo) {
-    //     return (this.x + this.width) >= mo.x && this.x <= (mo.x + mo.width) &&
-    //         (this.y + this.offsety + this.height) >= mo.y &&
-    //         (this.y + this.offsety) <= (mo.y + mo.height);
-    // }
 
 }

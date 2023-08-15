@@ -6,8 +6,10 @@ const level1 = new Level(
         new Endboss()
     ],
     [
-        new Cloud(),
-        new Cloud()
+        new Cloud(200),
+        new Cloud(1600),
+        new Cloud(2800),
+        new Cloud(3500)
     ],
     [
         new BackgroundObject('img/5_background/layers/air.png', -719),
@@ -40,27 +42,27 @@ const level1 = new Level(
         new BackgroundObject('img/5_background/layers/1_first_layer/2.png', 719*5)
     ],
     [
-        new Coins(200, 100),
-        new Coins(500, 100),
-        new Coins(1000, 100),
-        new Coins(1500, 100),
-        new Coins(2000, 100),
-        new Coins(2500, 100),
+        new Coins(350, 100),
+        new Coins(600, 100),
+        new Coins(1150, 100),
+        new Coins(1450, 100),
+        new Coins(2050, 100),
+        new Coins(2650, 100),
         new Coins(3000, 100),
-        new Coins(3200, 100),
-        new Coins(700, 100),
+        new Coins(3250, 100),
+        new Coins(850, 100),
         new Coins(1200, 100)
     ],
     [
-        new Bottles(1000),
-        new Bottles(500),
-        new Bottles(1500),
-        new Bottles(2000),
-        new Bottles(250),
+        new Bottles(900),
+        new Bottles(450),
+        new Bottles(1400),
+        new Bottles(1900),
+        new Bottles(300),
         new Bottles(750),
         new Bottles(2500),
         new Bottles(1800),
-        new Bottles(3000),
+        new Bottles(3300),
         new Bottles(2200),
     ]
 );
