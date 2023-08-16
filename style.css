@@ -2,8 +2,54 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('img/desert.png');
+    font-family: 'Luckiest Guy', Arial, sans-serif;
+    font-size: larger;
+    font-style: oblique;
 }
 
 canvas {
     background-color: black;
+    display: block;
+}
+
+h1 { 
+    font-size: 64px;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.control-menu {
+    width: 720px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.control-sub {
+    display: flex;
+    flex-direction: column;align-items: center;
+}
+
+.svg-space {
+    margin-top: 8px;
+    height: 58px;
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        height: 100%;
+    }
+
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-height: 562px) {
+    h1 {
+        display: none;
+    }
 }

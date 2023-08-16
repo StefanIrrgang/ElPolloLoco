@@ -23,17 +23,15 @@ class World {
         this.character.world = this;
     }
     
-
     run() {
         setInterval(() => {
-
         this.checkCollisions();
         this.checkThrowObjects();
     }, 200);
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D) {
+        if (this.keyboard.SPACE) {
             let bottle = new ThrowableObject(this.character.x + 30, this.character.y + 60);
             this.throwableObjects.push(bottle);
         }
@@ -99,9 +97,7 @@ class World {
         this.addToMap(this.statusBarBottle);
         this.ctx.translate(this.camera_x, 0);
 
-
         this.ctx.translate(-this.camera_x, 0);
-
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
