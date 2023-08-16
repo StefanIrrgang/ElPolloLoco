@@ -17,6 +17,14 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.GameMusic();
+        // initLevel();
+    }
+
+    GameMusic() {
+        this.gameMusic = new Audio('audio/mariachi.mp3');
+        this.gameMusic.loop = true;
+        this.gameMusic.play();
     }
 
     setWorld() {
@@ -42,7 +50,6 @@ class World {
                 if ( this.character.isColliding(enemy) ) {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
-                    console.log('energy', this.character.energy);
                 }
             });
             // this.level.endboss.forEach( (boss) => {
