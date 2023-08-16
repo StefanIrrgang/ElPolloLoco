@@ -4,9 +4,19 @@
 
 let level1 = new Level(
     [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
+        new Chicken(250),
+        new Chicken(450),
+        new Chicken(850),
+        new Chicken(900),
+        new Chicken(1400),
+        new Chicken(1600),
+        new Chicken(1650),
+        new Chicken(2000),
+        new Chicken(2200),
+        new Chicken(2700),
+        new Chicken(3000),
+        new Chicken(3050),
+        new Chicken(3150),
         new Endboss()
     ],
     [
