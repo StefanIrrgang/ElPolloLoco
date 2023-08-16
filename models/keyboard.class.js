@@ -10,7 +10,6 @@ class Keyboard {
         
     }
 
-    
 
     // BtsPressEvents() {
     //     document.getElementById('btnLeft').addEventListener('touchstart', (e) => {

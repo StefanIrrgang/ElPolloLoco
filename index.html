@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/fonts/fonts.css">
     <script src="/models/drawable-object.class.js"></script>
-    <script src="/models/movable-object.class.js"></script>    
+    <script src="/models/movable-object.class.js"></script>
     <script src="/models/statusbar.class.js"></script>
     <script src="/models/statusbar-coin.class.js"></script>
     <script src="/models/statusbar-bottle.class.js"></script>
@@ -28,31 +28,37 @@
 </head>
 
 <body onload="init()">
-    <h1>El pollo loco</h1>
+    <div id="fullscreen">
+        <h1>El pollo loco</h1>
 
-    <canvas id="canvas" width="720px" height="480px">
+        <canvas id="canvas" width="720px" height="480px">
+            
+        </canvas>
 
-    </canvas>
-
-    <div class="control-menu">
-        <div class="control-sub">
-            <div><img src="img/10_control/left.png" alt=""><img src="img/10_control/right.png" alt=""></div>
-            <div>WALK L/R</div>
-        </div>
-        <div class="control-sub">
-            <div><img src="img/10_control/up.png" alt=""></div>
-            <div>JUMP</div>
-        </div>
-        <div class="control-sub">
-            <div class="svg-space"> 
-                <svg width="128" height="48" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#FCC419" rx="8" ry="8" />
-                    <rect x="2" y="2" width="124" height="44" fill="none" stroke="white" stroke-width="4" rx="8" ry="8" />
-                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Luckiest Guy, Arial, sans-serif" font-size="16">SPACE</text>
-                  </svg>          
-              </div>
-            <div>THROW BOTTLE</div>
+        <div class="control-menu">
+            <div class="control-sub">
+                <div><img src="img/10_control/left.png" alt=""><img src="img/10_control/right.png" alt=""></div>
+                <div>WALK L/R</div>
+            </div>
+            <div class="control-sub">
+                <div><img src="img/10_control/up.png" alt=""></div>
+                <div>JUMP</div>
+            </div>
+            <div class="control-sub">
+                <div class="svg-space">
+                    <svg width="128" height="48" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="#FCC419" rx="8" ry="8" />
+                        <rect x="2" y="2" width="124" height="44" fill="none" stroke="white" stroke-width="4" rx="8"
+                            ry="8" />
+                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white"
+                            font-family="Luckiest Guy, Arial, sans-serif" font-size="16">SPACE</text>
+                    </svg>
+                </div>
+                <div>THROW BOTTLE</div>
+            </div>
+            <img class="btnFullscreen" onclick="fullscreen()" src="img/10_control/fullscreen.png" alt="fullscreen">
         </div>
     </div>
 </body>
+
 </html>

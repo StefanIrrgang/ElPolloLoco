@@ -9,6 +9,8 @@ class World {
     statusBarCoin = new StatusBarCoin();
     statusBarBottle = new StatusBarBottle();
     throwableObjects = [];
+    
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext("2d");
@@ -141,3 +143,5 @@ class World {
         this.ctx.restore();
     }
 }
+
+
