@@ -10,8 +10,6 @@ class World {
     statusBarBottle = new StatusBarBottle();
     throwableObjects = [];
     
-
-
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext("2d");
         this.canvas = canvas;
@@ -19,15 +17,15 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.GameMusic();
+        // this.GameMusic();
         // initLevel();
     }
 
-    GameMusic() {
-        this.gameMusic = new Audio('audio/mariachi.mp3');
-        this.gameMusic.loop = true;
-        this.gameMusic.play();
-    }
+    // GameMusic() {
+    //     this.gameMusic = new Audio('audio/mariachi.mp3');
+    //     this.gameMusic.loop = true;
+    //     this.gameMusic.play();
+    // }
 
     setWorld() {
         this.character.world = this;

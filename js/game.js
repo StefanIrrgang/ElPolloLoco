@@ -56,7 +56,7 @@ window.addEventListener('keyup', (event) => {
 })
 
 function fullscreen() {
-    let fullscreen = document.getElementById('fullscreen');
+    let fullscreen = document.getElementById('canvas');
     enterFullscreen(fullscreen);
 }
 
@@ -77,6 +77,7 @@ function enterFullscreen(element) {
       document.webkitExitFullscreen();
     }
   }
+
 
 // Opera browser fix
 // function checkOrientation() {
