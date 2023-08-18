@@ -19,6 +19,7 @@ class World {
         this.run();
         // this.GameMusic();
         // initLevel();
+        
     }
 
     // GameMusic() {
