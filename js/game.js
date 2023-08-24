@@ -78,7 +78,6 @@ function enterFullscreen(element) {
     }
   }
 
-
 // Opera browser fix
 // function checkOrientation() {
 //     if (window.matchMedia("(orientation: landscape)").matches) {
