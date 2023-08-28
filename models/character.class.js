@@ -5,7 +5,7 @@ class Character extends moveableObject {
     width = 160;
     speed = 13.5;
     energy = 100;
-    acceleration = 1.8;
+    acceleration = 2;
     imageCache = {};
     throwableObjects;
     amountCollectedCoins = 0;
@@ -123,7 +123,6 @@ class Character extends moveableObject {
         hurtSound.play();
       }
       if (this.isAboveGround()) {
-        this.acceleration = 3.0;
         this.playAnimation(this.Jumping_Images);
       }
       if (!this.characterResting && !this.characterSleeping) {

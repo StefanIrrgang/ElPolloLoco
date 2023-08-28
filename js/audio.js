@@ -4,16 +4,16 @@ const start_screen_music = new Audio('audio/start-music.mp3');
 const winner_Music = new Audio('audio/winner.mp3');
 const walkingSound = new Audio('audio/walking.mp3');
 const jumpingSound = new Audio('audio/jump.mp3');
-const deadSound = new Audio('audio/death.mp3');
+const deadSound = new Audio('audio/dead.mp3');
 const hurtSound = new Audio('audio/hurt.mp3');
 const gameOverVoice = new Audio('audio/game-over.mp3');
-const chicken_dead_sound = new Audio('audio/chicken-dead.mp3');
-const endboss_Sound = new Audio('audio/chicken-boss-death.mp3');
+const chicken_dead_sound = new Audio('audio/chicken2.mp3');
+const endboss_Sound = new Audio('audio/endboss-dead.mp3');
 const bottle_splash_sound = new Audio('audio/glass_shatter.mp3');
-const collect_coin_sound = new Audio('audio/collect-coin.mp3');
-const collect_bottle_sound = new Audio('audio/collect-bottle.mp3');
-const endboss_music = new Audio('audio/endboss-music.mp3');
-const snoringSound = new Audio('audio/snoring-sound.mp3');
+const collect_coin_sound = new Audio('audio/coin.mp3');
+const collect_bottle_sound = new Audio('audio/bottle.mp3');
+const endboss_music = new Audio('audio/endboss-coming.mp3');
+const snoringSound = new Audio('audio/sleeping.mp3');
 
 const allSounds = [
   game_music,
