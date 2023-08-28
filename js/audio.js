@@ -1,8 +1,7 @@
-// sound - elements
 const game_music = new Audio('audio/mariachi.mp3');
-const gameOverMusic = new Audio('audio/game-over-music.wav');
-const start_screen_music = new Audio('audio/start-screen-music.mp3');
-const winner_Music = new Audio('audio/winner_music.mp3');
+const gameOverMusic = new Audio('audio/game-over.mp3');
+const start_screen_music = new Audio('audio/start-music.mp3');
+const winner_Music = new Audio('audio/winner.mp3');
 const walkingSound = new Audio('audio/walking.mp3');
 const jumpingSound = new Audio('audio/jump.mp3');
 const deadSound = new Audio('audio/death.mp3');
@@ -10,14 +9,12 @@ const hurtSound = new Audio('audio/hurt.mp3');
 const gameOverVoice = new Audio('audio/game-over.mp3');
 const chicken_dead_sound = new Audio('audio/chicken-dead.mp3');
 const endboss_Sound = new Audio('audio/chicken-boss-death.mp3');
-const bottle_splash_sound = new Audio('audio/glass-shatter.mp3');
+const bottle_splash_sound = new Audio('audio/glass_shatter.mp3');
 const collect_coin_sound = new Audio('audio/collect-coin.mp3');
 const collect_bottle_sound = new Audio('audio/collect-bottle.mp3');
 const endboss_music = new Audio('audio/endboss-music.mp3');
 const snoringSound = new Audio('audio/snoring-sound.mp3');
 
-
-// Array with all sound elements
 const allSounds = [
   game_music,
   gameOverMusic,
@@ -88,8 +85,6 @@ function checkSoundMuted() {
     unmuteAllSounds();
   }
 };
-
-
 
 /*
 // Funktion zum Speichern des gemuteten Zustands im Local Storage

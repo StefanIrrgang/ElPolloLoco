@@ -2,20 +2,20 @@ class World {
     level = level1;
     enemies = level1.enemies;
     endboss = level1.endboss;
-    character = new Character();
     backgroundObjects = level1.backgroundObjects;
     clouds = level1.clouds;
     coins = level1.coins;
     bottles = level1.bottles;
     throwableObjects = level1.throwableObjects;
-    bottlebar = new BottleBar();
-    coinbar = new Coinbar();
-    healthbar = new HealthBar();
-    endbossHealthbar = new EndbossHealthbar();
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
     percentage;
+    character = new Character();
+    bottlebar = new BottleBar();
+    coinbar = new Coinbar();
+    healthbar = new HealthBar();
+    endbossHealthbar = new EndbossHealthbar();
     ctx;
     canvas;
     offset;
@@ -36,7 +36,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-
     }
 
     setWorld() {
@@ -48,10 +47,9 @@ class World {
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera, 0);
-
         this.addObjectsToMap(this.backgroundObjects);
         this.addObjectsToMap(this.clouds);
-        this.ctx.translate(-this.camera, 0); // camera back
+        this.ctx.translate(-this.camera, 0);
         this.addToMap(this.bottlebar);
         this.addToMap(this.coinbar);
         this.addToMap(this.healthbar);
@@ -59,7 +57,7 @@ class World {
             this.addToMap(this.endbossHealthbar);
             this.firstContact = true;
         }
-        this.ctx.translate(this.camera, 0); // camera forwards
+        this.ctx.translate(this.camera, 0);
         this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.endboss);
         this.addToMap(this.character);
@@ -67,7 +65,7 @@ class World {
         this.addObjectsToMap(this.bottles);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera, 0);
-        let self = this;               // Funktion draw() wird mehrmals hintereinander ausgeführt .
+        let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
@@ -110,10 +108,10 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkTrow();
+            this.checkThrow();
+            this.checkCollisionsEnemies();
             this.checkCollisionsCoins();
             this.checkCollisionsBottles();
-            this.checkCollisionsEnemies();
             this.checkCollisionEndboss();
             this.checkCollisionOfBottleWithEnemy();
             this.checkCollisionOfBottleWithEndboss();
@@ -148,7 +146,7 @@ class World {
         })
     }
 
-    checkTrow() {
+    checkThrow() {
         if (this.keyboard.D && this.character.amountCollectedBottles > 0) {
             this.character.amountCollectedBottles -= 10;
             this.bottle = new ThrowableObject(this.character.x + 40, this.character.y + 130);
