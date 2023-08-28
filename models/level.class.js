@@ -1,18 +1,24 @@
 class Level {
-    enemies;
-    clouds;
     backgroundObjects;
+    clouds;
     coins;
     bottles;
+    enemies;
     endboss;
-    level_end_x = 3600;
-
-    constructor(enemies, clouds, backgroundObjects, coins, bottles, endboss) {
-        this.enemies = enemies;
+    level_end = 3438;
+    throwableObjects;
+    throwableObjects = [];
+    collectedBottles = [];
+    collectedCoins = [];
+    throwableObjects;
+    
+    constructor(backgroundObjects, clouds, coins, bottles, enemies, endboss, throwableObjects) {
         this.backgroundObjects = backgroundObjects;
         this.clouds = clouds;
         this.coins = coins;
         this.bottles = bottles;
+        this.enemies = enemies;
         this.endboss = endboss;
+        this.throwableObjects = throwableObjects;
     }
 }

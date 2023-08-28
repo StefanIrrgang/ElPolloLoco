@@ -1,18 +1,22 @@
-class Cloud extends MovableObject {
-    y = 20;
-    height = 250;
-    width = 500;
-    speed = 0.15;
+class Cloud extends moveableObject {
+    width = 600;
+    height = 350;
+    imageCache = {};
 
-    constructor(x) {
+    Cloud_Images = [
+        'img/5_background/layers/4_clouds/1.png',
+        'img/5_background/layers/4_clouds/2.png',
+    ];
+
+    constructor() {
         super().loadImage('img/5_background/layers/4_clouds/1.png');
-        this.x = x;
-        this.animate();
+        this.loadImages(this.Cloud_Images);
+        this.y = 35;
+        this.x = 5 + Math.random() * 3800;
+        this.animate()
     }
 
     animate() {
-        setInterval(() => {
-            this.moveLeft();
-        }, 1000 / 24);
+        this.moveLeft();
     }
 }

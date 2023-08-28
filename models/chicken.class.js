@@ -1,37 +1,75 @@
-class Chicken extends MovableObject {
-    y = 355;
+class Chicken extends moveableObject {
+
+    offset = {
+        right: 5,
+        left: 5,
+        top: 5,
+        bottom: -100,
+    }
+
+    y = 350;
     height = 70;
     width = 70;
-    offset = {
-        top: 5,
-        left: 5,
-        right: 5,
-        bottom: 5
-    };
-    IMAGES_WALKING = [
+    energy = 1;
+    imageCache = {};
+
+    Walking_Images_Enemies = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
-        'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png'
+        'img/3_enemies_chicken/chicken_normal/1_walk/3_w.png',
     ];
-    chicken_sound = new Audio('audio/chicken.mp3');
 
-    constructor(x) {
+    Dead_Images_Enemies = [
+        'img/3_enemies_chicken/chicken_normal/2_dead/dead.png',
+    ];
+
+    constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
-        this.loadImages(this.IMAGES_WALKING);
-
-        this.x = x;
-        this.speed = 0.15 + Math.random() * 0.4;
+        this.loadImages(this.Walking_Images_Enemies);
+        this.loadImages(this.Dead_Images_Enemies);
+        this.x = 350 + Math.random() * 3000;
+        this.speed = 4.25 + Math.random() * 0.7;
         this.animate();
     }
 
     animate() {
-        setInterval(() => {
-            this.moveLeft();
-        }, 1000 / 60);
-        setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
-        }, 180);
+        let animationInterval = setInterval(() => {
+
+            if (this.isDead()) {
+                this.chickenDeathInterval(animationInterval);
+                setTimeout(() => {
+                    clearInterval(animationInterval);
+                }, 100);
+            } if (!this.isDead()) {
+                this.chickenMoving();
+            }
+        }, 5500 / 60);
     }
 
+    chickenMoving() {
+        this.moveLeft();
+        this.playAnimation(this.Walking_Images_Enemies);
+        this.otherDirection = false;
+    }
 
+    killedChickenToHell() {
+        setInterval(() => {
+            this.y++;
+        }, 50);
+    }
+
+    chickenDeathInterval() {
+        this.playAnimation(this.Dead_Images_Enemies);
+        this.killedChickenToHell();
+        chicken_dead_sound.play();
+    }
+
+    playAnimation(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }
+
+
