@@ -24,6 +24,4 @@ class BottleBar extends StatusBar {
         let path = this.BottleBar_Images[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
-
-    
 }

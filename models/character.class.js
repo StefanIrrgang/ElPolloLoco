@@ -252,12 +252,3 @@ class Character extends moveableObject {
     }
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  

@@ -17,7 +17,6 @@ class Cloud extends moveableObject {
     }
 
     animate() {
-        this.speed = 10;
         this.moveLeft();
     }
 }
