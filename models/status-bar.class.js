@@ -1,12 +1,12 @@
-class StatusBar extends DrawableObject{
+class StatusBar extends DrawableObject {
     img;
     width = 180;
     height = 60;
-    
-    constructor(){
+
+    constructor() {
         super();
     }
-    
+
     resolveImageIndex() {
         if (this.percentage >= 100) {
             return 5;

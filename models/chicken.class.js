@@ -1,17 +1,15 @@
 class Chicken extends moveableObject {
-
+    width = 70;
+    height = 70;
+    y = 350;
+    energy = 1;
+    imageCache = {};
     offset = {
         right: 5,
         left: 5,
         top: 5,
         bottom: -100,
     }
-
-    y = 350;
-    height = 70;
-    width = 70;
-    energy = 1;
-    imageCache = {};
 
     Walking_Images_Enemies = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',

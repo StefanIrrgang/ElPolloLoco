@@ -34,15 +34,6 @@ const allSounds = [
   snoringSound,
 ];
 
-function saveMuteState(muted) {
-  localStorage.setItem('soundMuted', muted);
-}
-
-function getMuteState() {
-  const muted = localStorage.getItem('soundMuted');
-  return muted === 'true';
-}
-
 function checkSoundMuted() {
   const isMuted = getMuteState();
   if (isMuted) {
@@ -51,6 +42,15 @@ function checkSoundMuted() {
     unmuteAllSounds();
   }
 };
+
+function saveMuteState(muted) {
+  localStorage.setItem('soundMuted', muted);
+}
+
+function getMuteState() {
+  const muted = localStorage.getItem('soundMuted');
+  return muted === 'true';
+}
 
 function muteAllSounds() {
   allSounds.forEach(sound => {

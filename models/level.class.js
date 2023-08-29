@@ -11,7 +11,7 @@ class Level {
     collectedBottles = [];
     collectedCoins = [];
     throwableObjects;
-    
+
     constructor(backgroundObjects, clouds, coins, bottles, enemies, endboss, throwableObjects) {
         this.backgroundObjects = backgroundObjects;
         this.clouds = clouds;

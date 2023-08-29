@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -24,26 +23,25 @@ body {
     z-index: 2;
 }
 
+#restart-btn {
+    z-index: 8;
+}
+
 #start-screen img {
     height: 480px;
     width: 720px;
     object-fit: fill;
 }
 
-#restart-btn {
-    z-index: 8;
-}
-
 .btn-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
-    gap: 17px;
-    margin-bottom: -20px;
+    margin-top: 16px;
+    gap: 18px;
+    margin-bottom: -18px;
     position: absolute;
     z-index: 8;
-
 }
 
 .buttons {
@@ -62,17 +60,17 @@ body {
     z-index: 8;
 }
 
+.buttons:hover {
+    cursor: pointer;
+    border: 2px solid rgb(244, 171, 62);
+    background-color: white;
+}
+
 .buttons img {
     height: 32px !important;
     width: 32px !important;
     object-fit: contain;
     cursor: pointer;
-}
-
-.buttons:hover {
-    cursor: pointer;
-    border: 2px solid rgb(244, 171, 62);
-    background-color: white;
 }
 
 .info-text-story {
@@ -100,6 +98,12 @@ canvas {
     position: relative;
 }
 
+#canvas-container {
+    height: 480px;
+    width: 720px;
+    position: relative;
+}
+
 h1 {
     font-size: 72px;
     color: rgb(246, 158, 26);
@@ -118,12 +122,6 @@ p {
     text-align: center;
 }
 
-#canvas-container {
-    height: 480px;
-    width: 720px;
-    position: relative;
-}
-
 .sub-headline {
     font-size: 30px;
     text-decoration: underline;
@@ -134,13 +132,13 @@ p {
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 188, 89);
+    background-color: rgb(244, 188, 104);
     border-radius: 10px;
     height: 340px;
     width: 450px;
     z-index: 4;
     margin-left: 135px;
-    margin-top: 60px;
+    margin-top: 64px;
     border: 3px solid white;
     padding-bottom: 10px;
     opacity: 0.85;
@@ -173,9 +171,9 @@ p {
 
 #x-mark img {
     height: 30px;
-    width: 30px !;
+    width: 30px !important;
     margin-right: -5px;
-    margin-top: -25px;
+    margin-top: -50px;
 }
 
 #winner {
@@ -191,6 +189,15 @@ p {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
 }
 
+#winner button {
+    height: 75px;
+    width: 75px;
+    cursor: pointer;
+    padding: 15px;
+    font-weight: 900;
+    z-index: 10;
+}
+
 #winner span {
     font-size: 95px;
     font-family: 'Boogaloo', cursive;
@@ -201,15 +208,6 @@ p {
     z-index: 2;
     text-align: center;
     -webkit-text-stroke: 3px #9b401d;
-}
-
-#winner button {
-    height: 75px;
-    width: 75px;
-    cursor: pointer;
-    padding: 15px;
-    font-weight: 900;
-    z-index: 10;
 }
 
 #game-over {
@@ -238,19 +236,19 @@ p {
     color: #ffa602;
 }
 
-.mobile-btn-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: -57px;
-}
-
 .width {
     display: flex;
     gap: 35px;
     margin-left: 50px;
     margin-right: 50px;
 
+}
+
+.mobile-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -57px;
 }
 
 .mobile-btn-container img {
@@ -349,24 +347,6 @@ p {
     }
 }
 
-@media only screen and(max-width:720px) {
-    canvas {
-        width: 100%;
-    }
-
-    .rotate {
-        display: flex;
-    }
-
-    h1 {
-        display: none;
-    }
-
-    #winner span {
-        font-size: 60px;
-    }
-}
-
 @media only screen and(max-height:480px) {
     canvas {
         height: 100vh;
@@ -385,7 +365,24 @@ p {
     }
 }
 
-/* Portrait orientation */
+@media only screen and(max-width:720px) {
+    canvas {
+        width: 100%;
+    }
+
+    .rotate {
+        display: flex;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    #winner span {
+        font-size: 60px;
+    }
+}
+
 @media screen and (orientation: portrait) {
     body {
         flex-direction: column;
@@ -401,7 +398,6 @@ p {
     }
 }
 
-/* Landscape orientation */
 @media screen and (max-width:1000px) {
     body {
         flex-direction: row;

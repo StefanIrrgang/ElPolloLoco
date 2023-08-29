@@ -13,7 +13,6 @@ class moveableObject extends DrawableObject {
     otherDirection = false;
     lastHit = 0;
     imageCache = {};
-
     offset = {
         right: 10,
         left: 10,
@@ -49,8 +48,8 @@ class moveableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0) 
-            this.y -= this.speedY;
+            if (this.isAboveGround() || this.speedY > 0)
+                this.y -= this.speedY;
             this.speedY -= this.acceleration;
 
         }, 1000 / 60)

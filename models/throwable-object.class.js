@@ -1,8 +1,8 @@
 class ThrowableObject extends moveableObject {
     x;
     y;
-    height = 65;
     width = 75;
+    height = 65;
     speedY = 27;
     bottleIsBroken = false;
     otherDirection = false;
@@ -37,10 +37,10 @@ class ThrowableObject extends moveableObject {
         this.applyGravity();
         this.throwBottleLeft = world.character.otherDirection;
         setInterval(() => {
-            if(this.throwBottleLeft){
+            if (this.throwBottleLeft) {
                 this.x -= 17;
             }
-            else{
+            else {
                 this.x += 17;
             }
         }, 35);
@@ -52,9 +52,9 @@ class ThrowableObject extends moveableObject {
                 this.bottleRotation();
             } else {
                 this.bottleSplashing();
-               setTimeout(() => {
-                clearInterval(this.bottleInterval);
-               }, 500);
+                setTimeout(() => {
+                    clearInterval(this.bottleInterval);
+                }, 500);
             }
         }, 1000 / 20);
     }
