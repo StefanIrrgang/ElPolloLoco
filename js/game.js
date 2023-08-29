@@ -34,7 +34,7 @@ function startGame() {
   document.getElementById('restart-btn').style.display = 'flex';
   startMobileButtonTouch();
   stopMobileButtonTouch();
-  fullScreen();
+  // fullScreen();
 }
 
 function restartGame() {

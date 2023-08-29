@@ -43,7 +43,7 @@
         </div>
         <h1 id="headline">El Pollo Loco</h1>
         <div id="canvas-container">
-            <div id="game-over" style="display: none;"><img src="img/9_intro_outro_screens/game_over/you lost.png" class="restart"
+            <div id="game-over" style="display: none;"><img src="img/9_intro_outro_screens/game_over/oh no you lost!.png" class="restart"
                     id="game-over-img">
                 <button class="buttons" style="display: none;" id="restart-btn" onclick="restartGame()">Restart</button>
             </div>
@@ -55,9 +55,9 @@
                 <button class="buttons" onclick="showInformation()" id="info-btn"><img
                         src="img/12_otherIMG/info.png"></button>
                 <button class="buttons" style="display: none;" onclick="unmuteAllSounds()" id="sound-on"><img
-                        src="img/12_otherIMG/sound.on.png"></button>
-                <button class="buttons" style="display: flex;" id="sound-mute" onclick="muteAllSounds()"><img
                         src="img/12_otherIMG/sound-off.png"></button>
+                <button class="buttons" style="display: flex;" id="sound-mute" onclick="muteAllSounds()"><img
+                        src="img/12_otherIMG/sound.on.png"></button>
                 <button class="buttons" style="display: flex;" onclick=" fullScreen()" id="fullscreen-icon"><img
                         src="img/12_otherIMG/fullscreen.png"></button>
                 <button class="buttons" style="display: none;" onclick=" minimizeFullscreen()" id="exitfull-icon"><img
@@ -69,19 +69,19 @@
                     onclick="restartGame()">Restart</button>
             </div>
             <div class="control-info" id="information-text" style="display: none;">
-                <div id="x-mark"><img src="img/10_control/close.png" onclick="hideInformationOverlay()"></div>
+                <div id="x-mark"><img src="img/10_control/close2.png" onclick="hideInformationOverlay()"></div>
                 <h2>Pepe Peligroso</h2>
-                <p>Pepe is a kind and hard working man , who is working at a chicken farm near his home-village. Someday an evil gringo came by , and poisened the water of the chicken farm. All chicken went nuts and the rooster got an enormous size. Pepe knew he had to fight the rooster , and if he would win , everything would be fine again. </p>
+                <p class="info-text-story">Pepe is a kind and hard working man , who is working at a chicken farm near his home-village. Someday an evil gringo came by , and poisened the water of the chicken farm. All chicken went nuts and the rooster got an enormous size. Pepe knew he had to fight the rooster , and if he would win , everything would be fine again. </p>
             </div>
             <div id="control-info" class="control-info" style="display:none;">
-                <div id="x-mark"><img src="img/10_control/close.png" onclick="hideControlOverlay()"></div>
+                <div id="x-mark"><img src="img/10_control/close2.png" onclick="hideControlOverlay()"></div>
                 <div id="subhead" class="sub-headline">
                     <h2 id="headline2">Controls</h2>
                 </div>
                 <div id="control1"><span>move to left :</span><span><img src="img/10_control/left.png"></span></div>
                 <div id="control2"><span>move to right :</span><span><img src="img/10_control/right.png"></span></div>
                 <div id="control3"><span>Pepe jump :</span><span><img src="img/10_control/up.png"></span></div>
-                <div id="control4"><span>throw bottle :</span><span><img src="img/10_control/throw.png"></span></div>
+                <div id="control4"><span>throw bottle :</span><span><img src="img/10_control/space2.png" alt="SPACE"></span></div>
             </div>
             <div id="start-screen"><img src="img/9_intro_outro_screens/start/startscreen_1.png" id="start-img">
             </div>
@@ -92,7 +92,7 @@
                     <img src="img/10_control/right.png" class="buttons" id="right" onclick="moveRight()">
                 </div>
                 <div class="width"><img src="img/10_control/up.png" class="buttons" id="jump" onclick="jump()">
-                    <img src="img/10_control/throw.png" class="buttons" id="throw" onclick="throwBottle()">
+                    <img src="img/10_control/bottle.png" class="buttons" id="throw" onclick="throwBottle()">
                 </div>
             </div>
         </div>
