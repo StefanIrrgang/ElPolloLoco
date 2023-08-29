@@ -53,7 +53,7 @@ class World {
         this.addToMap(this.bottlebar);
         this.addToMap(this.coinbar);
         this.addToMap(this.healthbar);
-        if (this.character.x > 2900 || this.firstContact) {
+        if (this.character.x > 4300 || this.firstContact) {
             this.addToMap(this.endbossHealthbar);
             this.firstContact = true;
         }

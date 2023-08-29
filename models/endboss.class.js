@@ -1,7 +1,7 @@
 class Endboss extends moveableObject {
     height = 350;
     width = 180;
-    x = 3650;
+    x = 4850;
     y = 100;
     speed = 8.5;
     level;
@@ -96,7 +96,7 @@ class Endboss extends moveableObject {
     }
 
     playMovement() {
-        if (world.character.x > 3100 && !this.firstContact) {
+        if (world.character.x > 4300 && !this.firstContact) {
             game_music.pause();
             endboss_music.play();
             this.isMoving = true;
@@ -107,9 +107,9 @@ class Endboss extends moveableObject {
         }
         if (world.character.x < this.x && this.firstContact) {
             this.endbossMovingLeft();
-        } else if (this.x < 2800 && this.firstContact) {
+        } else if (this.x < 4200 && this.firstContact) {
             this.endbossMovingRight();
-        } else if (this.x > 3400 && world.character.x < this.x && this.firstContact) {
+        } else if (this.x > 4800 && world.character.x < this.x && this.firstContact) {
             this.endbossMovingLeft();
         } else {
             this.playAnimation(this.Alert_Images_Endboss);

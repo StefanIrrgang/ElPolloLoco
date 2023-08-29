@@ -2,7 +2,6 @@ class Cloud extends moveableObject {
     width = 600;
     height = 350;
     imageCache = {};
-    speed = 10;
 
     Cloud_Images = [
         'img/5_background/layers/4_clouds/1.png',
@@ -18,6 +17,7 @@ class Cloud extends moveableObject {
     }
 
     animate() {
+        this.speed = 10;
         this.moveLeft();
     }
 }

@@ -5,7 +5,7 @@ class Level {
     bottles;
     enemies;
     endboss;
-    level_end = 3438;
+    level_end = 4650;
     throwableObjects;
     throwableObjects = [];
     collectedBottles = [];

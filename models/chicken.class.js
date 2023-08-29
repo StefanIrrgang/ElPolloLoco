@@ -27,14 +27,13 @@ class Chicken extends moveableObject {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.Walking_Images_Enemies);
         this.loadImages(this.Dead_Images_Enemies);
-        this.x = 350 + Math.random() * 3000;
+        this.x = 350 + Math.random() * 4250;
         this.speed = 4.25 + Math.random() * 0.7;
         this.animate();
     }
 
     animate() {
         let animationInterval = setInterval(() => {
-
             if (this.isDead()) {
                 this.chickenDeathInterval(animationInterval);
                 setTimeout(() => {
@@ -71,5 +70,3 @@ class Chicken extends moveableObject {
         this.currentImage++;
     }
 }
-
-

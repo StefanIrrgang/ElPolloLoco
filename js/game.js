@@ -4,11 +4,9 @@ let keyboard = new Keyboard();
 let contentLoaded = false;
 allSounds;
 activeFullscreen = false;
-
 winner_Music.volume = 0.15;
 game_music.volume = 0.15;
 start_screen_music.volume = 0.20;
-
 
 function playStartMusic() {
   setTimeout(() => {

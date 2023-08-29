@@ -84,8 +84,8 @@ class moveableObject extends DrawableObject {
     }
 
     isHurt() {
-        let time_passed = new Date().getTime() - this.lastHit;  // Differenz in Millisekunden
-        time_passed = time_passed / 1000; // Differenz in Sekunden
+        let time_passed = new Date().getTime() - this.lastHit;
+        time_passed = time_passed / 1000;
         return time_passed < 0.6;
     }
 

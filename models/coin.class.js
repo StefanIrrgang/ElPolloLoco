@@ -18,13 +18,12 @@ class Coin extends moveableObject {
     constructor() {
       super().loadImage('img/8_coin/coin_1.png');
       this.loadImages(this.Images_Coin);
-      this.x = 200 + Math.random() * 3050;
+      this.x = 200 + Math.random() * 4200;
       this.y = 280 - Math.random() * 200;
       this.animate();
     }
     
     playAnimation(images) {
-  
       let i = this.currentImage % images.length;
       let path = images[i];
       this.img = this.imageCache[path];
@@ -32,9 +31,7 @@ class Coin extends moveableObject {
     }
   
     animate() {
-  
       setInterval(() => {
-  
         this.playAnimation(this.Images_Coin)
       }, 12000 / 60);
     }

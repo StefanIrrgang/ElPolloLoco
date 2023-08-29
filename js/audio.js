@@ -34,38 +34,15 @@ const allSounds = [
   snoringSound,
 ];
 
-// function which saves to local storage
 function saveMuteState(muted) {
   localStorage.setItem('soundMuted', muted);
 }
 
-//Function to query the muted state from the Local Storage
 function getMuteState() {
   const muted = localStorage.getItem('soundMuted');
-  return muted === 'true'; // The Local Storage stores strings, so we compare with 'true'.
+  return muted === 'true';
 }
 
-// function tomutes sound and saves it to local storage
-function muteAllSounds() {
-  allSounds.forEach(sound => {
-    sound.muted = true;
-  });
-  saveMuteState(true);
-  document.getElementById('sound-mute').style.display = 'none';
-  document.getElementById('sound-on').style.display = 'flex';
-}
-
-//function unmutes sound and saves it to the local storage
-function unmuteAllSounds() {
-  allSounds.forEach(sound => {
-    sound.muted = false;
-  });
-  saveMuteState(false);
-  document.getElementById('sound-mute').style.display = 'flex';
-  document.getElementById('sound-on').style.display = 'none';
-}
-
-// function , which checks if sound is muted , stays muted by refresh or restart
 function checkSoundMuted() {
   const isMuted = getMuteState();
   if (isMuted) {
@@ -75,30 +52,6 @@ function checkSoundMuted() {
   }
 };
 
-/*
-// Beim Laden der Seite überprüfen und den gemuteten Zustand setzen
-function checkSoundMuted() {
-  const isMuted = getMuteState();
-  if (isMuted) {
-    muteAllSounds();
-  } else {
-    unmuteAllSounds();
-  }
-};
-
-/*
-// Funktion zum Speichern des gemuteten Zustands im Local Storage
-function saveMuteState(muted) {
-  localStorage.setItem('soundMuted', muted);
-}
-
-// Funktion zum Abfragen des gemuteten Zustands aus dem Local Storage
-function getMuteState() {
-  const muted = localStorage.getItem('soundMuted');
-  return muted === 'true'; // Der Local Storage speichert Strings, daher vergleichen wir mit 'true'
-}
-
-// Funktion zum Stummschalten aller Sounds und Speichern des Zustands
 function muteAllSounds() {
   allSounds.forEach(sound => {
     sound.muted = true;
@@ -108,7 +61,6 @@ function muteAllSounds() {
   document.getElementById('sound-on').style.display = 'flex';
 }
 
-// Funktion zum Aktivieren aller Sounds und Speichern des Zustands
 function unmuteAllSounds() {
   allSounds.forEach(sound => {
     sound.muted = false;
@@ -117,30 +69,3 @@ function unmuteAllSounds() {
   document.getElementById('sound-mute').style.display = 'flex';
   document.getElementById('sound-on').style.display = 'none';
 }
-
-// Beim Laden der Seite überprüfen und den gemuteten Zustand setzen
-window.onload = function () {
-  const isMuted = getMuteState();
-  if (isMuted) {
-    muteAllSounds();
-  } else {
-    unmuteAllSounds();
-  }
-};
-
-
-
-// Beispiel: Button zum Umschalten des Soundstatus
-document.getElementById('sound-toggle').addEventListener('click', function () {
-  const isMuted = getMuteState();
-  if (isMuted) {
-    unmuteAllSounds();
-  } else {
-    muteAllSounds();
-  }
-});
-
-
-
-
-*/
