@@ -202,8 +202,8 @@ p {
 }
 
 #winner span {
-    font-size: 95px;
-    font-family: 'Boogaloo', cursive;
+    font-size: 82px;
+    font-family: 'Luckiest Guy', Arial, sans-serif;
     background-image: linear-gradient(to bottom, #ffdf00, #ffa602);
     -webkit-background-clip: text;
     background-clip: text;

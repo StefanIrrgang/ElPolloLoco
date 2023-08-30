@@ -12,7 +12,6 @@ class Endboss extends moveableObject {
     otherDirection = false;
     firstContact = false;
     isMoving = false;
-
     offset = {
         right: 30,
         left: 30,
@@ -90,8 +89,10 @@ class Endboss extends moveableObject {
                 this.y++; this.x = this.x;
             }, 30);
             this.showEndScreen();
-        } if (this.isHurt()) {
-            this.endbossIsHurtAnimation();
+        } else {
+            if (this.isHurt()) {
+                this.endbossIsHurtAnimation();
+            }
         }
     }
 
