@@ -5,12 +5,12 @@ class EndbossHealthbar extends StatusBar {
     imageCache = {};
 
     Endboss_Health_Bar_Images = [
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png',
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png',
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png',
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png',
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png',
-       'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png',
+       'img/7_statusbars/2_statusbar_endboss/statusbar_endboss/endboss000.png',
+       'img/7_statusbars/2_statusbar_endboss/statusbar_endboss/endboss020.png',
+       'img/7_statusbars/2_statusbar_endboss/statusbar_endboss/endboss040.png',
+       'img/7_statusbars/2_statusbar_endboss/statusbar_endboss/endboss060.png',
+       'img/7_statusbars/2_statusbar_endboss/statusbar_endboss/endboss080.png',
+       'img/7_statusbars/2_statusbar_endboss/green.png',
     ]
 
     constructor() {
