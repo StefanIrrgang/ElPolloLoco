@@ -9,10 +9,15 @@ game_music.volume = 1;
 start_screen_music.volume = 0.20;
 
 function playStartMusic() {
-  setTimeout(() => {
-    start_screen_music.play();
-  }, 1500);
-  checkSoundMuted();
+const tryToPlay = setInterval(() => {
+    start_screen_music.play()
+      .then(() => {
+          clearInterval(tryToPlay);
+      })
+      .catch(error => {
+      });
+}, 1000);
+checkSoundMuted();
 }
 
 function init() {
