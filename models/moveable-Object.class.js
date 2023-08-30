@@ -20,13 +20,6 @@ class moveableObject extends DrawableObject {
         bottom: 10,
     };
 
-    isColliding(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
-    }
-
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -64,6 +57,20 @@ class moveableObject extends DrawableObject {
         }
     }
 
+    isColliding(mo) {
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
+    }
+
+    throw() {
+        this.applyGravity();
+        setInterval(() => {
+            this.x += 7.5;
+        }, 25)
+    }
+
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {
@@ -90,13 +97,6 @@ class moveableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
-    }
-
-    throw() {
-        this.applyGravity();
-        setInterval(() => {
-            this.x += 7.5;
-        }, 25)
     }
 
     clearAllIntervals() {
