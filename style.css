@@ -15,7 +15,7 @@ html, body {
     background-size: contain;
     background-repeat: no-repeat;
     height: 480px;
-    width: 720px;
+    width: 100%;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ html, body {
 
 #start-screen img {
     height: 480px;
-    width: 720px;
+    width: 100%;
     object-fit: fill;
 }
 
