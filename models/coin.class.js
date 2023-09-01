@@ -1,3 +1,6 @@
+/**
+ * This class contains the properties to define the size, position and images of the coins.
+ */
 class Coin extends moveableObject {
   width = 105;
   height = 105;
@@ -9,11 +12,17 @@ class Coin extends moveableObject {
     bottom: 10,
   };
 
+  /**
+   * Array with images of the coins
+   */
   Images_Coin = [
     'img/8_coin/coin_1.png',
     'img/8_coin/coin_2.png',
   ];
 
+  /**
+   * Initiate coins at random position and call animate function
+   */
   constructor() {
     super().loadImage('img/8_coin/coin_1.png');
     this.loadImages(this.Images_Coin);
@@ -22,6 +31,10 @@ class Coin extends moveableObject {
     this.animate();
   }
 
+  /**
+   * Play animation of the coins
+   * @param {string} images - Array of coins
+   */
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
@@ -29,6 +42,9 @@ class Coin extends moveableObject {
     this.currentImage++;
   }
 
+  /**
+   * Initiate animation for the coins
+   */
   animate() {
     setInterval(() => {
       this.playAnimation(this.Images_Coin)
