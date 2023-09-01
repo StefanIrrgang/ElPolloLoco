@@ -74,8 +74,8 @@ class moveableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 5;
-        if (this.energy < 0) {
+        this.energy -= 2;
+        if (this.energy <= 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
@@ -84,7 +84,7 @@ class moveableObject extends DrawableObject {
 
     hitEndboss() {
         this.energy -= 3;
-        if (this.energy < 0) {
+        if (this.energy <= 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();

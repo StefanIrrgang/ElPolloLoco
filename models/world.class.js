@@ -109,13 +109,15 @@ class World {
     run() {
         setInterval(() => {
             this.checkThrow();
-            this.checkCollisionsEnemies();
             this.checkCollisionsCoins();
             this.checkCollisionsBottles();
             this.checkCollisionEndboss();
             this.checkCollisionOfBottleWithEnemy();
             this.checkCollisionOfBottleWithEndboss();
         }, 100);
+        setInterval(() => {
+            this.checkCollisionsEnemies();
+        }, 30);
     }
 
     clearAllIntervals() {
@@ -127,7 +129,7 @@ class World {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.energy > 0 && this.character.speedY < 0) {
                 enemy.energy--;
                 this.character.jump();
-                if (enemy.energy == 0) {
+                if (enemy.energy === 0) {
                     this.clearEnemyFromCanvas(enemy);
                 }
             } else if (this.character.isColliding(enemy) && !this.character.isAboveGround() && this.character.energy > 0 && enemy.energy > 0) {
