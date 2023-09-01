@@ -1,3 +1,8 @@
+/**
+ * set the elements for level1 of the game
+ * loaded from the level1 array below
+ */
+
 let level1;
 
 function initLevel() {

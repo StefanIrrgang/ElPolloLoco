@@ -1,3 +1,6 @@
+/**
+ * The class contains properties to set size and position of the object.
+ */
 class BackgroundObject extends moveableObject {
     width = 720;
     height = 480;

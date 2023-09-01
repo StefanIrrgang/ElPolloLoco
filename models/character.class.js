@@ -1,3 +1,6 @@
+/**
+ * The class contains properties and methods to control the character movement, animations as well as actions.
+ */
 class Character extends moveableObject {
   y = 180;
   x = 100;
@@ -24,6 +27,9 @@ class Character extends moveableObject {
     right: 25,
   };
 
+  /**
+   * Collection of arrays which contain all needed images for the different animations.
+   */
   Idle_Images = [
     'img/2_character_pepe/1_idle/idle/I-1.png',
     'img/2_character_pepe/1_idle/idle/I-2.png',
@@ -88,6 +94,9 @@ class Character extends moveableObject {
     'img/2_character_pepe/5_dead/D-57.png',
   ];
 
+  /**
+   * Generate the character at the defined place according to the x and y coordinates with the respective images.
+   */
   constructor() {
     super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
     this.loadImages(this.Idle_Images);
@@ -100,6 +109,9 @@ class Character extends moveableObject {
     this.applyGravity();
   }
 
+  /**
+   * Set interval for the playMovement and playImages functions
+   */
   animate() {
     this.moveInterval = setInterval(() => {
       this.playMovement();
@@ -110,6 +122,10 @@ class Character extends moveableObject {
     }, 50);
   }
 
+  /**
+   * Plays the animation depending from the character's current state.
+   * Chooses correct images based on character's actions and conditions.
+   */
   playImages() {
     if (this.isDead()) {
       this.characterDeathAnimation();
@@ -129,6 +145,10 @@ class Character extends moveableObject {
     }
   }
 
+  /**
+   * The character movements according to the keyboard input
+   * Also plays sound depending on the character's state
+   */
   playMovement() {
     walkingSound.pause();
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end) {
@@ -151,21 +171,34 @@ class Character extends moveableObject {
     }
   }
 
+  /**
+   * Plays the resting state images depending on the lastMoveTime
+   */
   characterResting() {
     this.lastMoveTime += 70;
     this.playAnimation(this.Idle_Images);
   }
 
+  /**
+   * Plays the sleeping images
+   */
   characterSleeping() {
     this.playAnimation(this.Long_Idle_Images);
   }
 
+  /**
+   * Plays the hurt images and stop the snoring sound and reset the lastMoveTime
+   */
   characterHurtAnimation() {
     snoringSound.pause();
     this.lastMoveTime = 0;
     this.playAnimation(this.Hurt_Images);
   }
 
+  /**
+   * Move the character to the left, resets lastMoveTime and plays walking images
+   * Set other direction true to switch direction of the character to the left
+   */
   characterMoveLeft() {
     this.lastMoveTime = 0;
     this.moveLeft();
@@ -174,6 +207,10 @@ class Character extends moveableObject {
     walkingSound.play();
   }
 
+    /**
+   * Move the character to the right, resets lastMoveTime and plays walking images
+   * Set other direction false to switch direction of the character to the right
+   */
   characterMoveRight() {
     this.lastMoveTime = 0;
     this.moveRight();
@@ -182,6 +219,11 @@ class Character extends moveableObject {
     walkingSound.play();
   }
 
+    /**
+   * Move the character upwards, resets lastMoveTime
+   * Stop snoring sound if character stands for while before the jump.
+   * Plays jump sound from the beginning
+   */
   characterIsJumping() {
     this.lastMoveTime = 0;
     snoringSound.pause();
@@ -190,6 +232,10 @@ class Character extends moveableObject {
     jumpingSound.play();
   }
 
+    /**
+   * Plays dead images of character, stops snorinmg sound and resets lastMoveTime
+   * Clear moveInterval and call function to move character ('killedPepeToHell')
+   */
   characterDeathAnimation() {
     deadSound.play();
     snoringSound.pause();
@@ -202,12 +248,18 @@ class Character extends moveableObject {
     }, 1500);
   }
 
+  /**
+   * Animation to show character died.
+   */
   killedPepeToHell() {
     setInterval(() => {
       this.y++;
     }, 80);
   }
 
+  /**
+   * Collect the coins and update the coinbar
+   */
   collectCoin() {
     if (this.amountCollectedCoins >= 100) {
       this.amountCollectedCoins = 100;
@@ -216,6 +268,9 @@ class Character extends moveableObject {
     }
   }
 
+  /**
+   * Colect bottles and update the bottlebar
+   */
   collectBottle() {
     if (this.amountCollectedBottles >= 100) {
       this.amountCollectedBottles = 100;
@@ -224,6 +279,9 @@ class Character extends moveableObject {
     }
   }
 
+  /**
+   * Show the4 game over screen if user lost the game
+   */
   showGameOverScreen() {
     walkingSound.pause();
     document.getElementById('game-over').style.display = 'flex';
@@ -242,6 +300,11 @@ class Character extends moveableObject {
     }, 50);
   }
 
+  /**
+   * Play the images to show animation from the respective image array
+   * Set the camera view
+   * @param {string} images 
+   */
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
