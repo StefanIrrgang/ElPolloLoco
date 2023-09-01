@@ -8,6 +8,10 @@ winner_Music.volume = 0.15;
 game_music.volume = 1;
 start_screen_music.volume = 0.20;
 
+/**
+ * This function starts the general menu music after the website was loaded
+ * An interaction from the user is needed to start playing the music otherwise there is no music
+ */
 function playStartMusic() {
 const tryToPlay = setInterval(() => {
     start_screen_music.play()
@@ -20,6 +24,9 @@ const tryToPlay = setInterval(() => {
 checkSoundMuted();
 }
 
+/**
+ * This function starts the ingame music after the start button was pressed
+ */
 function init() {
   game_music.play();
   initLevel();
@@ -29,6 +36,11 @@ function init() {
   }, 10);
 }
 
+/**
+ * Initiates the ingame music as well as mutes the menu music
+ * Removes the start screen to show the game world
+ * Enable the touchscreen button for control on mobile devices
+ */
 function startGame() {
   init();
   start_screen_music.muted = true;
@@ -41,6 +53,9 @@ function startGame() {
   stopMobileButtonTouch();
 }
 
+/**
+ * Reload the document and hide the winner or game over screen and show start screen again
+ */
 function restartGame() {
   location.reload();
   document.getElementById('restart-btn').style.display = 'none';
@@ -67,6 +82,9 @@ function showInformation() {
   document.getElementById('information-text').style.display = 'flex';
 }
 
+/**
+ * Enable fullscreen mode
+ */
 function fullScreen() {
   let fullscreen = document.getElementById('canvas-container');
   activeFullscreen = true;
@@ -76,6 +94,10 @@ function fullScreen() {
   document.getElementById('restart-btn').disabled = false;
 }
 
+/**
+ * Disable fullscreen
+ * funcion is not ative since browser has own function to mnimize by clicking ESC
+ */
 function minimizeFullscreen() {
   document.getElementById('fullscreen-icon').style.display = 'flex';
   let fullScreen = document.getElementById('canvas-container');
@@ -84,6 +106,9 @@ function minimizeFullscreen() {
   styleMinimizedScreen();
 }
 
+/**
+ * Resize all elements for fullscreen
+ */
 function styleFullScreen() {
   document.getElementById('fullscreen-icon').style.display = 'none';
   document.getElementById('canvas').style.height = '100%';
@@ -100,6 +125,9 @@ function styleFullScreen() {
   document.getElementById('game-over-img').style.height = '100%';
 }
 
+/**
+ * Resize all elements for minimized screen
+ */
 function styleMinimizedScreen() {
   document.getElementById('exitfull-icon').style.display = 'none';
   document.getElementById('canvas').style.height = '480px';
@@ -116,6 +144,10 @@ function styleMinimizedScreen() {
   document.getElementById('game-over-img').style.height = '480px';
 }
 
+/**
+ * Enter fullscreen mode
+ * @param {*} element - This is the name of the element/container which will show in fullscreen
+ */
 function enterFullscreen(element) {
   if (element.requestFullscreen) {
     element.requestFullscreen();
@@ -126,6 +158,9 @@ function enterFullscreen(element) {
   }
 }
 
+/**
+ * Exit fullscreen mode
+ */
 function exitFullscreen() {
   if (document.exitFullscreen && activeFullscreen) {
     document.exitFullscreen();
@@ -134,6 +169,9 @@ function exitFullscreen() {
   }
 }
 
+/**
+ * Exit fullscreen by clicking ESC
+ */
 function exitFullscreenOnEscape(event) {
   if (event.key === "Escape") {
     minimizeFullscreen();
@@ -194,6 +232,9 @@ window.addEventListener('keyup', (event) => {
   }
 })
 
+/**
+ * enable mobile control via touchscreen
+ */
 function startMobileButtonTouch() {
   document.getElementById("left").addEventListener("touchstart", (event) => {
     keyboard.LEFT = true;
@@ -213,6 +254,9 @@ function startMobileButtonTouch() {
   });
 }
 
+/**
+ * stop mobile control via touchscreen
+ */
 function stopMobileButtonTouch() {
   document.getElementById("left").addEventListener("touchend", (event) => {
     keyboard.LEFT = false;
