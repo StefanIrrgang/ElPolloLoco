@@ -3,7 +3,7 @@ class ThrowableObject extends moveableObject {
     y;
     width = 75;
     height = 65;
-    speedY = 27;
+    speedY = 30;
     bottleIsBroken = false;
     otherDirection = false;
 
@@ -38,10 +38,10 @@ class ThrowableObject extends moveableObject {
         this.throwBottleLeft = world.character.otherDirection;
         setInterval(() => {
             if (this.throwBottleLeft) {
-                this.x -= 17;
+                this.x -= 23;
             }
             else {
-                this.x += 17;
+                this.x += 23;
             }
         }, 35);
     }
