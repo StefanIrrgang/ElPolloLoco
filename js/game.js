@@ -64,19 +64,31 @@ function restartGame() {
   document.getElementById('start-screen').style.display = 'flex';
 }
 
+/**
+ * Hide the menu control overlay
+ */
 function hideControlOverlay() {
   document.getElementById('control-info').style.display = 'none';
 }
 
+/**
+ * Hide the menu information/story overlay
+ */
 function hideInformationOverlay() {
   document.getElementById('information-text').style.display = 'none';
 }
 
+/**
+ * Show the overlay with the instructions for the controls of the game
+ */
 function showControls() {
   document.getElementById('control-info').style.display = 'flex';
   document.getElementById('information-text').style.display = 'none';
 }
 
+/**
+ * Show the overlay with the information/story of the game
+ */
 function showInformation() {
   document.getElementById('control-info').style.display = 'none';
   document.getElementById('information-text').style.display = 'flex';
@@ -181,6 +193,9 @@ function exitFullscreenOnEscape(event) {
 const fullscreenElement = document.getElementById("canvas-container");
 document.addEventListener("keyup", exitFullscreenOnEscape);
 
+/**
+ * Check if sounds are muted and toggle the setting
+ */
 function checkSoundMuted() {
   const isMuted = getMuteState();
   if (isMuted) {
@@ -190,6 +205,9 @@ function checkSoundMuted() {
   }
 };
 
+/**
+ * Set boolean true for inputs from keyboard from the respective key
+ */
 window.addEventListener('keydown', (event) => {
   if(event.key == "ArrowDown") {
       keyboard.DOWN = true;
@@ -211,6 +229,9 @@ window.addEventListener('keydown', (event) => {
   }
 })
 
+/**
+ * Set boolean false for inputs from keyboard from the respective key
+ */
 window.addEventListener('keyup', (event) => {
   if(event.key == "ArrowDown") {
       keyboard.DOWN = false;
@@ -276,6 +297,9 @@ function stopMobileButtonTouch() {
   });
 }
 
+/**
+ * move right if mouse is pressed on button to go to right
+ */
 function moveRight() {
   const button = document.getElementById("right");
 
@@ -287,6 +311,10 @@ function moveRight() {
   });
 }
 
+/**
+ * /**
+ * move left if mouse is pressed on button to go to left
+ */
 function moveLeft() {
   const button = document.getElementById("left");
 
@@ -298,6 +326,9 @@ function moveLeft() {
   });
 }
 
+/**
+ * jump if mouse is pressed on up button for jump
+ */
 function jump() {
   const button = document.getElementById("jump");
 
@@ -309,6 +340,9 @@ function jump() {
   });
 }
 
+/**
+ * throws bottle if mouse is pressed on bottle button
+ */
 function throwBottle() {
   const button = document.getElementById("throw");
 
