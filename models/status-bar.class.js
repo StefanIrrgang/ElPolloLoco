@@ -1,12 +1,21 @@
+/**
+ * Class which contains a statusbar
+ */
 class StatusBar extends DrawableObject {
     img;
     width = 180;
     height = 60;
 
+    /**
+     * Constructor of statusbar class
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Returns value for percentage to set the different status bars
+     */
     resolveImageIndex() {
         if (this.percentage >= 100) {
             return 5;
