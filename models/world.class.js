@@ -1,5 +1,5 @@
 /**
- * The gasme world which contains and manage all objects as well as render functions
+ * The game world which contains and manage all objects as well as render functions
  */
 class World {
     level = level1;
