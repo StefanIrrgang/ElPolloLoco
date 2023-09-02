@@ -1,3 +1,6 @@
+/**
+ * The gasme world which contains and manage all objects as well as render functions
+ */
 class World {
     level = level1;
     enemies = level1.enemies;
@@ -29,6 +32,11 @@ class World {
     intervals = [];
     i = 1;
 
+    /**
+     * Load the canvas for the game and the keyboard input
+     * @param {HTMLCanvasElement} canvas - canvas element to render
+     * @param {Keyboard} keyboard - keyboard input
+     */
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
@@ -38,13 +46,18 @@ class World {
         this.run();
     }
 
+    /**
+     * Set up the world and the objects 
+     */
     setWorld() {
         this.character.world = this;
         this.endboss.world = this;
     }
 
+    /**
+     * Draw world and all elements
+     */
     draw() {
-
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera, 0);
         this.addObjectsToMap(this.backgroundObjects);
@@ -71,12 +84,21 @@ class World {
         });
     }
 
+    /**
+     * Adds an array of objects to the map
+     * @param {DrawableObject[]} objects - Array with the objects which are added to the map
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
         });
     }
 
+    /**
+     * Adds a drawable object to the map
+     * Switch direction of object
+     * @param {DrawableObject} mo - The DrawableObject which is added to map
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -87,6 +109,10 @@ class World {
         };
     }
 
+    /**
+     * Change direction of the image
+     * @param {DrawableObject} mo - The drawable object to switch direction 
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0)
@@ -94,11 +120,19 @@ class World {
         mo.x = mo.x * -1;
     }
 
+    /**
+     * Change direction of the image back
+     * @param {DrawableObject} mo - The drawable object to revert back
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
 
+    /**
+     * Play the animation of the image paths
+     * @param {string} images - An array of image paths
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -106,6 +140,9 @@ class World {
         this.currentImage++;
     }
 
+    /**
+     * Game intervals to check all interactions
+     */
     run() {
         setInterval(() => {
             this.checkThrow();
@@ -120,10 +157,16 @@ class World {
         }, 30);
     }
 
+    /**
+     * Clear all intervals
+     */
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
 
+    /**
+     * Check collisions between character and enemies and call respective functions for further actions
+     */
     checkCollisionsEnemies() {
         this.level.enemies.forEach(enemy => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.energy > 0 && this.character.speedY < 0) {
@@ -139,6 +182,9 @@ class World {
         });
     }
 
+    /**
+     * Check collisions between character and endboss and call respective functions for further actions
+     */
     checkCollisionEndboss() {
         this.level.endboss.forEach(endboss => {
             if (this.character.isColliding(endboss)) {
@@ -148,6 +194,9 @@ class World {
         })
     }
 
+    /**
+     * Check if character able to throw object and throws object
+     */
     checkThrow() {
         if (this.keyboard.D && this.character.amountCollectedBottles > 0) {
             this.character.amountCollectedBottles -= 10;
@@ -157,6 +206,9 @@ class World {
         }
     }
 
+    /**
+     * Check collisions between bottle and enemies and call respective functions for further actions
+     */
     checkCollisionOfBottleWithEnemy() {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
@@ -169,6 +221,9 @@ class World {
         });
     }
 
+    /**
+     * Check collisions between bottle and endboss and call respective functions for further actions 
+     */
     checkCollisionOfBottleWithEndboss() {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
@@ -181,6 +236,9 @@ class World {
         });
     }
 
+    /**
+     *  Check collisions between character and coins and call respective functions for further actions
+     */
     checkCollisionsCoins() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
@@ -193,6 +251,9 @@ class World {
         })
     }
 
+    /**
+     * Check collisions between character and bottles and call respective functions for further actions
+     */
     checkCollisionsBottles() {
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
@@ -205,6 +266,10 @@ class World {
         })
     }
 
+    /**
+     * Remove enemy from canvas after hit from character from the top
+     * @param {Enemy} enemy - enemy object to remove
+     */
     clearEnemyFromCanvas(enemy) {
         setTimeout(() => {
             this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
@@ -213,6 +278,10 @@ class World {
         }, 1000);
     }
 
+    /**
+     * Remove Bottle from canvas after collide with character
+     * @param {Bottle} bottles - bottle object to remove
+     */
     clearBottleFromCanvas(bottles) {
         setTimeout(() => {
             this.level.bottles.splice(this.level.bottles.indexOf(bottles), 1);
@@ -222,12 +291,19 @@ class World {
         }, 50);
     }
 
+    /**
+     * Remove Coin from canvas after collide with character
+     * @param {Coin} bottles - bottle object to remove
+     */
     clearCoinFromCanvas(coins) {
         setTimeout(() => {
             this.level.coins.splice(this.level.coins.indexOf(coins), 1);
         }, 50);
     }
 
+    /**
+     * Reduce energy of endboss if hit with bottle
+     */
     hitEndboss() {
         this.energy -= 10;
         if (this.energy <= 0) {
@@ -238,6 +314,10 @@ class World {
         console.log(this.endboss.energy);
     }
 
+    /**
+     * Check for dead of character
+     * @returns boolean - true if energy is zero
+     */
     isDead() {
         return this.energy = 0;
     }

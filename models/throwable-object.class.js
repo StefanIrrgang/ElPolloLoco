@@ -1,3 +1,6 @@
+/**
+ * Class for throwable objects which extends the movable object class
+ */
 class ThrowableObject extends moveableObject {
     x;
     y;
@@ -7,6 +10,9 @@ class ThrowableObject extends moveableObject {
     bottleIsBroken = false;
     otherDirection = false;
 
+    /**
+     * Arrays with images for different animations
+     */
     Bottle_Rotation_Images = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
@@ -23,6 +29,11 @@ class ThrowableObject extends moveableObject {
         'img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png',
     ];
 
+    /**
+     * Load images for the animations
+     * @param {number} x - x coordinate from where to start the throw ob the object
+     * @param {number} y - y coordinate from where to start the throw ob the object
+     */
     constructor(x, y) {
         super();
         this.loadImages(this.Bottle_Rotation_Images);
@@ -32,6 +43,9 @@ class ThrowableObject extends moveableObject {
         this.y = y;
     }
 
+    /**
+     * Throw throwable object and show animation
+     */
     throw() {
         this.animateBottle();
         this.applyGravity();
@@ -46,6 +60,9 @@ class ThrowableObject extends moveableObject {
         }, 35);
     }
 
+    /**
+     * Shows the rotation of the throwable object
+     */
     animateBottle() {
         this.bottleInterval = setInterval(() => {
             if (this.y < 345) {
@@ -59,10 +76,16 @@ class ThrowableObject extends moveableObject {
         }, 1000 / 20);
     }
 
+    /**
+     * Animate the rotation
+     */
     bottleRotation() {
         this.playAnimation(this.Bottle_Rotation_Images);
     }
 
+    /**
+     * Animate the splashing of the object and plays sound
+     */
     bottleSplashing() {
         bottle_splash_sound.pause();
         this.bottleIsBroken = true;
@@ -70,6 +93,10 @@ class ThrowableObject extends moveableObject {
         bottle_splash_sound.play();
     }
 
+    /**
+     * Remove object from canvas
+     * @param {number} bottles - bottle index to remove
+     */
     clearBottleFromCanvas(bottles) {
         setTimeout(() => {
             this.level.bottles.splice(this.level.bottles.indexOf(bottles), 1);

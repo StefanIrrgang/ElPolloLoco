@@ -1,3 +1,6 @@
+/**
+ * All movable objects that extend the drawable object class
+ */
 class moveableObject extends DrawableObject {
     x;
     y;
@@ -20,6 +23,10 @@ class moveableObject extends DrawableObject {
         bottom: 10,
     };
 
+    /**
+     * Load all image paths from array and play the animation
+     * @param {string} images 
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -27,18 +34,31 @@ class moveableObject extends DrawableObject {
         this.currentImage++;
     }
 
+    /**
+     * Move object upwards
+     */
     jump() {
         this.speedY = 35;
     }
 
+    /**
+     * Move object to the left
+     */
     moveLeft() {
         this.x -= this.speed;
     }
 
+    /**
+     * Move object to the right
+     */
     moveRight() {
         this.x += this.speed;
     }
 
+    /**
+     * Set the gravity to the object
+     * The vertical behaviour
+     */
     applyGravity() {
         setInterval(() => {
             if (this instanceof (Character) && this.y > 180) {
@@ -50,6 +70,9 @@ class moveableObject extends DrawableObject {
         }, 1000 / 60)
     }
 
+    /**+
+     * Returns boolean true if object above ground or value if under y=180
+     */
     isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true;
@@ -59,6 +82,11 @@ class moveableObject extends DrawableObject {
         }
     }
 
+    /**
+     * Check the collision conditions to see if objects touch or overlap each other
+     * @param {moveableObject} mo 
+     * @returns boolean - true if colliding
+     */
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
@@ -66,6 +94,9 @@ class moveableObject extends DrawableObject {
             this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
     }
 
+    /**
+     * Throws objects depending on gravity
+     */
     throw() {
         this.applyGravity();
         setInterval(() => {
@@ -73,6 +104,9 @@ class moveableObject extends DrawableObject {
         }, 25)
     }
 
+    /**
+     * Reduce energy of character if hit by enemy
+     */
     hit() {
         this.energy -= 2;
         if (this.energy <= 0) {
@@ -82,6 +116,9 @@ class moveableObject extends DrawableObject {
         }
     }
 
+    /**
+     * Reduce energy of endboss if hit by character
+     */
     hitEndboss() {
         this.energy -= 3;
         if (this.energy <= 0) {
@@ -91,16 +128,27 @@ class moveableObject extends DrawableObject {
         }
     }
 
+    /**
+     * Check if object was hurt
+     * @returns boolean - true if hurt
+     */
     isHurt() {
         let time_passed = new Date().getTime() - this.lastHit;
         time_passed = time_passed / 1000;
         return time_passed < 0.6;
     }
 
+    /**
+     * Check if object energy is = 0
+     * @returns boolean - true if died
+     */
     isDead() {
         return this.energy == 0;
     }
 
+    /**
+     * Clear all intervals
+     */
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }

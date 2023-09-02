@@ -1,3 +1,6 @@
+/**
+ * The endboss object with properties and methods for position, movement and animations.
+ */
 class Endboss extends moveableObject {
     width = 180;
     height = 350;
@@ -19,6 +22,9 @@ class Endboss extends moveableObject {
         bottom: 20,
     };
 
+    /**
+     * Arrays wit images for the respective animation
+     */
     Walking_Images_Endboss = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -60,6 +66,9 @@ class Endboss extends moveableObject {
         'img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
 
+    /**
+     * Load the images and the start image and call animate function
+     */
     constructor() {
         super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png');
         this.loadImages(this.Walking_Images_Endboss);
@@ -70,6 +79,9 @@ class Endboss extends moveableObject {
         this.animate();
     }
 
+    /**
+     * Initiate animation for endboss
+     */
     animate() {
         this.moveInterval = setInterval(() => {
             this.playMovement();
@@ -80,6 +92,9 @@ class Endboss extends moveableObject {
         }, 150);
     }
 
+    /**
+     * Plays images depending on endboss state
+     */
     playImages() {
         if (this.isDead()) {
             this.clearAllIntervals();
@@ -96,6 +111,9 @@ class Endboss extends moveableObject {
         }
     }
 
+    /**
+     * Endboss movement depending on different conditions in if else loops
+     */
     playMovement() {
         if (world.character.x > 4300 && !this.firstContact) {
             game_music.pause();
@@ -117,11 +135,17 @@ class Endboss extends moveableObject {
         }
     }
 
+    /**
+     * Play endboss dead animation
+     */
     endbossIsDeadAnimation() {
         this.playAnimation(this.Dead_Images_Endboss);
         this.isMoving = false;
     }
 
+    /**
+     * Move endboss to the right
+     */
     endbossMovingRight() {
         this.playAnimation(this.Walking_Images_Endboss);
         this.moveRight();
@@ -130,6 +154,9 @@ class Endboss extends moveableObject {
         this.speed = 6, 0;
     }
 
+    /**
+     * Move endboss to the left
+     */
     endbossMovingLeft() {
         this.playAnimation(this.Walking_Images_Endboss);
         this.moveLeft();
@@ -138,15 +165,25 @@ class Endboss extends moveableObject {
         this.speed = 6, 0;
     }
 
+    /**
+     * Show hurt animation of endboss
+     */
     endbossIsHurtAnimation() {
         endboss_Sound.play();
         this.playAnimation(this.Hurt_Images_Endboss);
     }
 
+    /**
+     * Show alert animation od endboss
+     */
     endbossIsAlert() {
         this.playAnimation(this.Alert_Images_Endboss);
     }
 
+    /**
+     * Load all image paths from array
+     * @param {string} images 
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -154,6 +191,9 @@ class Endboss extends moveableObject {
         this.currentImage++;
     }
 
+    /**
+     * Show endscreen, stop all sounds and play winnner music and screen
+     */
     showEndScreen() {
         setTimeout(() => {
             endboss_music.pause();
@@ -166,6 +206,9 @@ class Endboss extends moveableObject {
         }, 500);
     }
 
+    /**
+     * Clear all intervals
+     */
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
