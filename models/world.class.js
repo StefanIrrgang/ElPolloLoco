@@ -242,7 +242,7 @@ class World {
     checkCollisionsCoins() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
-                collect_coin_sound.pause();
+                // collect_coin_sound.pause();
                 this.character.collectCoin();
                 collect_coin_sound.play();
                 this.coinbar.setPercentage(this.character.amountCollectedCoins);

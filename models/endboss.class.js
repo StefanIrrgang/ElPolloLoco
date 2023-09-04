@@ -122,11 +122,11 @@ class Endboss extends moveableObject {
             this.firstContact = true;
             setTimeout(() => {
                 this.endbossMovingLeft();
-            }, 2000);
+            }, 1500);
         }
         if (world.character.x < this.x && this.firstContact) {
             this.endbossMovingLeft();
-        } else if (this.x < 4200 && this.firstContact) {
+        } else if (this.x < world.character.x && this.firstContact) {
             this.endbossMovingRight();
         } else if (this.x > 4800 && world.character.x < this.x && this.firstContact) {
             this.endbossMovingLeft();
